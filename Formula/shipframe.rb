@@ -1,8 +1,8 @@
 class Shipframe < Formula
   desc "AI coding workflows for teams that plan, prove, and ship"
   homepage "https://github.com/juanitourquiza/shipframe"
-  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "e21b0a1680ed7b4ae8b0664a3d065c48ab4f56d83c1f3cb15f0e6e2cc843fa66"
+  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "9680675950bb1b0abee996758aaf11455ab9f1133d1a3292cb36430f6ed3e3c9"
   license "MIT"
 
   depends_on "node"
