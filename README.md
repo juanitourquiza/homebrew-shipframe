@@ -16,10 +16,20 @@ brew trust --formula juanitourquiza/shipframe/shipframe
 brew install shipframe
 ```
 
-Other supported install targets:
+## Usage
 
 ```bash
 shipframe install --claude
 shipframe install --opencode
+shipframe install --codex
 shipframe install --all
+```
+
+ShipFrame v0.4.0 also exposes installer maintenance commands through the same
+wrapper:
+
+```bash
+shipframe install --doctor --repo-only
+shipframe install --repair --opencode --yes
+shipframe install --uninstall --all --yes --purge
 ```
