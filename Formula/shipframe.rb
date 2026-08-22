@@ -1,15 +1,15 @@
 class Shipframe < Formula
   desc "AI coding workflows for teams that plan, prove, and ship"
   homepage "https://shipframe.hackeruna.com/"
-  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.4.1.tar.gz"
-  sha256 "519a4a4a7f8d50708931c4c51e964837e53adac357f34fc40b25e72ba96cb3af"
+  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.4.2.tar.gz"
+  sha256 "3ba411154438a24e134e3c552fdb7c536efcad580183492f272864476dc83b0b"
   license "MIT"
 
   depends_on "node"
 
   resource "readme" do
-    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.4.1/README.md"
-    sha256 "4be2bea1e073deb3d15895a43266fdab777c28f418d5555717fd82bd466a65f7"
+    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.4.2/README.md"
+    sha256 "c385a5b3a492e3cbc65cf86e031856fc5457364446001853a1f2fc9a83f51473"
   end
 
   def install
