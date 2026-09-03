@@ -25,7 +25,7 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.4.2 also exposes installer maintenance commands through the same
+ShipFrame v0.4.3 also exposes installer maintenance commands through the same
 wrapper:
 
 ```bash
