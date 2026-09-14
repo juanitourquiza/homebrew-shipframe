@@ -16,6 +16,19 @@ brew trust --formula juanitourquiza/shipframe/shipframe
 brew install shipframe
 ```
 
+## Optional: concise agent responses with Caveman
+
+Homebrew installs ShipFrame only. If you want shorter internal agent responses,
+add Caveman separately:
+
+```bash
+npx skills add JuliusBrussee/caveman
+```
+
+Caveman is opt-in: activate it with `/caveman` when concise responses help, and
+return to normal wording with `normal mode` for release evidence, customer copy,
+security work, or destructive actions.
+
 ## Usage
 
 ```bash
