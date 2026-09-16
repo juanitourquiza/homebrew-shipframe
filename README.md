@@ -16,6 +16,17 @@ brew trust --formula juanitourquiza/shipframe/shipframe
 brew install shipframe
 ```
 
+
+## Optional: Herdr plugin
+
+Homebrew installs the base ShipFrame toolkit only. Install the Herdr surface separately:
+
+```bash
+herdr plugin install juanitourquiza/shipframe/herdr-plugin --yes
+```
+
+Docs: https://github.com/juanitourquiza/shipframe#herdr-local-workflow-plugin
+
 ## Optional: concise agent responses with Caveman
 
 Homebrew installs ShipFrame only. If you want shorter internal agent responses,
@@ -38,7 +49,7 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.4.3 also exposes installer maintenance commands through the same
+ShipFrame v0.4.5 also exposes installer maintenance commands through the same
 wrapper:
 
 ```bash
