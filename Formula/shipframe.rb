@@ -1,15 +1,15 @@
 class Shipframe < Formula
   desc "AI coding workflows for teams that plan, prove, and ship"
   homepage "https://shipframe.hackeruna.com/"
-  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.4.5.tar.gz"
-  sha256 "357a185580c9f1b4aeca3e671f8a585b7336fd23790f5a99cc5c1cb3ddeee038"
+  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.4.6.tar.gz"
+  sha256 "c4abd5c8e49331075a704099ec9c260906336a5c4ae1e07ea3c282a0f8c56e0d"
   license "MIT"
 
   depends_on "node"
 
   resource "readme" do
-    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.4.5/README.md"
-    sha256 "cb62bb030d0a2799eded34d76c2b10135b4a6a56a754ba0cb83eff1a7d22bae3"
+    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.4.6/README.md"
+    sha256 "5b37d1212cc2cb3de6b91372004b56661c6370840829e043b6cf671640b8eedd"
   end
 
   def install
@@ -31,14 +31,13 @@ class Shipframe < Formula
         install --codex        Install for Codex CLI (skills + orchestrator workflow).
         install --all          Install for Claude Code, OpenCode, and Codex.
         install --doctor       Run diagnostics. Use --repo-only for CI-safe checks.
-        install --sync-docs    Sync an optional project Live Docs manifest.
         install --repair       Repair ShipFrame-owned artifacts. Dry-run unless --yes is passed.
         install --uninstall    Remove ShipFrame-owned artifacts. Dry-run unless --yes is passed.
 
       Examples:
         shipframe install --codex
         shipframe install --doctor --repo-only
-        shipframe install --sync-docs --project-dir /absolute/path/to/project --dry-run
+        shipframe install --doctor
         shipframe install --repair --opencode --yes
         shipframe install --uninstall --all --yes --purge
       USAGE
