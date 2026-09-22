@@ -31,12 +31,14 @@ class Shipframe < Formula
         install --codex        Install for Codex CLI (skills + orchestrator workflow).
         install --all          Install for Claude Code, OpenCode, and Codex.
         install --doctor       Run diagnostics. Use --repo-only for CI-safe checks.
+        install --sync-docs    Sync an optional project Live Docs manifest.
         install --repair       Repair ShipFrame-owned artifacts. Dry-run unless --yes is passed.
         install --uninstall    Remove ShipFrame-owned artifacts. Dry-run unless --yes is passed.
 
       Examples:
         shipframe install --codex
         shipframe install --doctor --repo-only
+        shipframe install --sync-docs --project-dir /absolute/path/to/project --dry-run
         shipframe install --repair --opencode --yes
         shipframe install --uninstall --all --yes --purge
       USAGE
