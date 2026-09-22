@@ -54,7 +54,19 @@ wrapper:
 
 ```bash
 shipframe install --doctor --repo-only
-shipframe install --sync-docs --project-dir /absolute/path/to/project --dry-run
+shipframe install --doctor
 shipframe install --repair --opencode --yes
 shipframe install --uninstall --all --yes --purge
+```
+
+## Optional: Live Docs with Context MCP
+
+ShipFrame recommends Context MCP when you want versioned local library docs for the optional `live-docs` workflow. ShipFrame works without it; Homebrew installs only ShipFrame and never runs npm or edits Claude Code, Codex CLI, or OpenCode configuration for you.
+
+```bash
+npm install -g @neuledge/context
+claude mcp add context -- context serve
+codex mcp add context -- context serve
+# OpenCode: add command ["context", "serve"] under mcp.context in ~/.config/opencode/opencode.json
+shipframe install --doctor
 ```
