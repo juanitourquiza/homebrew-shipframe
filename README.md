@@ -54,6 +54,7 @@ wrapper:
 
 ```bash
 shipframe install --doctor --repo-only
+shipframe install --sync-docs --project-dir /absolute/path/to/project --dry-run
 shipframe install --repair --opencode --yes
 shipframe install --uninstall --all --yes --purge
 ```
