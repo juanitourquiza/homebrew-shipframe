@@ -2,7 +2,7 @@ class Shipframe < Formula
   desc "AI coding workflows for teams that plan, prove, and ship"
   homepage "https://shipframe.hackeruna.com/"
   url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.4.7.tar.gz"
-  sha256 "cd285dc2cf81a717846b52c0650b5f54925e33169a8c1a8668272c5049e45a58"
+  sha256 "aa98c69e615b3f850a2128e8d9bfe3dcc5b20a86b785cdbdfaeb9153d926ab7f"
   license "MIT"
 
   depends_on "node"
