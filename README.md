@@ -49,7 +49,7 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.4.5 also exposes installer maintenance commands through the same
+ShipFrame v0.4.6 also exposes installer maintenance commands through the same
 wrapper:
 
 ```bash
@@ -67,6 +67,6 @@ ShipFrame recommends Context MCP when you want versioned local library docs for 
 npm install -g @neuledge/context
 claude mcp add context -- context serve
 codex mcp add context -- context serve
-# OpenCode: add command ["context", "serve"] under mcp.context in ~/.config/opencode/opencode.json
+# OpenCode v2: add command ["context", "serve"] under mcp.servers.context in ~/.config/opencode/opencode.json
 shipframe install --doctor
 ```
