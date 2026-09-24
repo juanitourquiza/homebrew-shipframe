@@ -49,7 +49,7 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.4.7 also exposes installer maintenance commands through the same
+ShipFrame v0.4.8 also exposes installer maintenance commands through the same
 wrapper:
 
 ```bash
@@ -58,6 +58,10 @@ shipframe install --doctor
 shipframe install --repair --opencode --yes
 shipframe install --uninstall --all --yes --purge
 ```
+
+## Optional: cross-host prompt fast path
+
+ShipFrame v0.4.8 adds an advisory prompt fast path for Claude Code, Codex CLI, and OpenCode. It can bypass, suggest, or route to a matching workflow; it does not replace explicit user direction. Codex hooks require user trust, and OpenCode plugin registration stays under your control.
 
 ## Optional: Live Docs with Context MCP
 
