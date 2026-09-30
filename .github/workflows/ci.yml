@@ -1,0 +1,30 @@
+name: Homebrew Formula CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  formula:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Register checked-out repository as a local tap
+        run: |
+          tap_dir="$(brew --repository)/Library/Taps/juanitourquiza/homebrew-shipframe"
+          mkdir -p "$(dirname "$tap_dir")"
+          ln -s "$GITHUB_WORKSPACE" "$tap_dir"
+      - name: Check formula style
+        run: brew style --formula juanitourquiza/shipframe/shipframe
+      - name: Audit formula metadata and downloads
+        run: brew audit --strict --online juanitourquiza/shipframe/shipframe
+      - name: Check release version
+        run: brew livecheck --formula juanitourquiza/shipframe/shipframe
+      - name: Install formula from source
+        run: brew install --build-from-source juanitourquiza/shipframe/shipframe
+      - name: Run formula smoke test
+        run: brew test juanitourquiza/shipframe/shipframe

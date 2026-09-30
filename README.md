@@ -16,6 +16,8 @@ brew trust --formula juanitourquiza/shipframe/shipframe
 brew install shipframe
 ```
 
+Pull requests run the formula style check, strict online audit, release livecheck, source install, and formula smoke test on macOS.
+
 
 ## Optional: Herdr plugin
 
