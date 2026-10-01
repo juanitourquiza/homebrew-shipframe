@@ -46,13 +46,14 @@ security work, or destructive actions.
 
 ```bash
 shipframe install --claude
+shipframe install --openwork
 shipframe install --opencode
 shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.7.2 also exposes installer maintenance commands through the same
-wrapper:
+ShipFrame v0.7.3 adds a dedicated OpenWork skills target and exposes installer
+maintenance commands through the same wrapper:
 
 ```bash
 shipframe install --doctor --repo-only
@@ -60,6 +61,11 @@ shipframe install --doctor
 shipframe install --repair --opencode --yes
 shipframe install --uninstall --all --yes --purge
 ```
+
+For OpenWork, `shipframe install --openwork` links the shared skill catalog into
+`~/.claude/skills`; OpenWork Library lists the skills individually, rather than
+as a single `shipframe` item. The Homebrew formula installs the toolkit; these
+per-tool skill links are created only when you run the installer.
 
 ## Optional: cross-host prompt fast path
 
