@@ -52,7 +52,7 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.7.3 adds a dedicated OpenWork skills target and exposes installer
+ShipFrame v0.7.4 adds OpenWork Library-compatible physical skill copies and exposes installer
 maintenance commands through the same wrapper:
 
 ```bash
@@ -62,10 +62,12 @@ shipframe install --repair --opencode --yes
 shipframe install --uninstall --all --yes --purge
 ```
 
-For OpenWork, `shipframe install --openwork` links the shared skill catalog into
-`~/.claude/skills`; OpenWork Library lists the skills individually, rather than
-as a single `shipframe` item. The Homebrew formula installs the toolkit; these
-per-tool skill links are created only when you run the installer.
+For OpenWork, `shipframe install --openwork` copies the shared skill catalog into
+`~/.claude/skills` as managed physical folders because OpenWork Library does not
+index symlinks. Restart or refresh OpenWork after installation; it lists skills
+individually, rather than as a single `shipframe` item. Modified or unmanaged
+folders are preserved. The Homebrew formula installs the toolkit; these
+per-tool skill copies are created only when you run the installer.
 
 ## Optional: cross-host prompt fast path
 

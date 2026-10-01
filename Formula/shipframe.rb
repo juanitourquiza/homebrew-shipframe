@@ -1,16 +1,16 @@
 class Shipframe < Formula
   desc "AI coding workflows for teams that plan, prove, and ship"
   homepage "https://shipframe.hackeruna.com/"
-  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.7.3.tar.gz"
-  sha256 "25e9fd52eee4d8e2837b8cb3a696eed124005c67756c70c3ef3a52b38150fc5e"
+  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.7.4.tar.gz"
+  sha256 "251ac83129405261f38703a1e12f3f18d447c8132f5c5920467150feabeaf773"
   license "MIT"
 
   depends_on "node"
   depends_on "python@3.14"
 
   resource "readme" do
-    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.7.3/README.md"
-    sha256 "6fc3da8bdaef90495170be3c8fe6d5aff61ef743ecabc912b999c12320ec01d4"
+    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.7.4/README.md"
+    sha256 "a9fca2f6b703be5a4ff658c7b84b670479d9e38edd420ada3fde28df76aee55c"
   end
 
   def install
@@ -28,7 +28,7 @@ class Shipframe < Formula
 
       Commands:
         install --claude       Install for Claude Code (plugin + shared skills).
-        install --openwork     Install shared skills for OpenWork.
+        install --openwork     Install physical shared skills for OpenWork Library discovery.
         install --opencode     Install for OpenCode (skills + converted agents + prompt router).
         install --codex        Install for Codex CLI (skills + workflow + optional prompt hook).
         install --all          Install for Claude Code, OpenCode, and Codex.
@@ -94,10 +94,11 @@ class Shipframe < Formula
     with_env("HOME" => home.to_s, "XDG_STATE_HOME" => (testpath/"state").to_s) do
       shell_output("#{bin}/shipframe install --openwork")
       skill = home/".claude/skills/code-review"
-      assert_predicate skill, :symlink?
+      assert_predicate skill, :directory?
       assert_path_exists skill/"SKILL.md"
+      assert_path_exists skill/".shipframe-openwork.json"
       shell_output("#{bin}/shipframe install --uninstall --openwork --yes")
-      refute_predicate skill, :symlink?
+      refute_path_exists skill
     end
   end
 end
