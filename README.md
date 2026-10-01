@@ -51,7 +51,7 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.7.0 also exposes installer maintenance commands through the same
+ShipFrame v0.7.2 also exposes installer maintenance commands through the same
 wrapper:
 
 ```bash
@@ -63,7 +63,7 @@ shipframe install --uninstall --all --yes --purge
 
 ## Optional: cross-host prompt fast path
 
-ShipFrame v0.7.0 adds a bilingual preventive security-hardening workflow alongside evidence-based security review. It also includes optional technology packs for JavaScript, TypeScript, PHP, Node.js, Python, Go, Rust, Angular, Laravel, React/Vite, Next.js, NestJS, and FastAPI, plus the advisory prompt fast path for Claude Code, Codex CLI, and OpenCode. These are workflow/review guides, not installed libraries. The fast path can bypass, suggest, or route to a matching workflow; it does not replace explicit user direction. Codex hooks require user trust, and OpenCode plugin registration stays under your control.
+ShipFrame v0.7.2 adds CI validation for skill and agent metadata contracts and formalizes the QA `small` path as reduced test depth only; it never skips final review. It also includes the bilingual preventive security-hardening workflow, evidence-based security review, optional technology packs, and the advisory prompt fast path. These are workflow/review guides, not installed libraries. Explicit user direction takes precedence. Codex hooks require user trust, and OpenCode plugin registration stays under your control.
 
 ## Optional: Live Docs with Context MCP
 
