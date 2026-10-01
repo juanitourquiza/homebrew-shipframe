@@ -1,16 +1,16 @@
 class Shipframe < Formula
   desc "AI coding workflows for teams that plan, prove, and ship"
   homepage "https://shipframe.hackeruna.com/"
-  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.7.2.tar.gz"
-  sha256 "216c95443f11452ed3fe4f58f72fc566f06fffbd1728f9cb5c6be5e662ae7da9"
+  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.7.3.tar.gz"
+  sha256 "25e9fd52eee4d8e2837b8cb3a696eed124005c67756c70c3ef3a52b38150fc5e"
   license "MIT"
 
   depends_on "node"
   depends_on "python@3.14"
 
   resource "readme" do
-    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.7.2/README.md"
-    sha256 "ac396bd540bd38805dfa77bb7a3577d6c1d1683b736ada7fc670156936203af9"
+    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.7.3/README.md"
+    sha256 "6fc3da8bdaef90495170be3c8fe6d5aff61ef743ecabc912b999c12320ec01d4"
   end
 
   def install
@@ -27,7 +27,8 @@ class Shipframe < Formula
       Usage: shipframe <command> [options]
 
       Commands:
-        install --claude       Install for Claude Code.
+        install --claude       Install for Claude Code (plugin + shared skills).
+        install --openwork     Install shared skills for OpenWork.
         install --opencode     Install for OpenCode (skills + converted agents + prompt router).
         install --codex        Install for Codex CLI (skills + workflow + optional prompt hook).
         install --all          Install for Claude Code, OpenCode, and Codex.
@@ -88,5 +89,15 @@ class Shipframe < Formula
     assert_match "Usage: shipframe", shell_output("#{bin}/shipframe --help")
     assert_match "--doctor", shell_output("#{bin}/shipframe install --help")
     assert_match "Doctor summary:", shell_output("#{bin}/shipframe install --doctor --repo-only")
+
+    home = testpath/"home"
+    with_env("HOME" => home.to_s, "XDG_STATE_HOME" => (testpath/"state").to_s) do
+      shell_output("#{bin}/shipframe install --openwork")
+      skill = home/".claude/skills/code-review"
+      assert_predicate skill, :symlink?
+      assert_path_exists skill/"SKILL.md"
+      shell_output("#{bin}/shipframe install --uninstall --openwork --yes")
+      refute_predicate skill, :symlink?
+    end
   end
 end
