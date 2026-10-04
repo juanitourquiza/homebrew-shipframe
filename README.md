@@ -52,7 +52,9 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.7.4 adds OpenWork Library-compatible physical skill copies and exposes installer
+ShipFrame v0.8.0 adds opt-in Git-backed project memory with an explicit, reviewed
+Draft PR flow; Engram remains optional. It also includes the OpenWork Library-
+compatible physical skill copies introduced in v0.7.4 and exposes installer
 maintenance commands through the same wrapper:
 
 ```bash
