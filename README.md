@@ -6,6 +6,9 @@ Install ShipFrame on macOS with Homebrew:
 brew tap juanitourquiza/shipframe
 brew install shipframe
 shipframe install --codex
+
+# Optional native Codex delegation roles (explorer + independent reviewer)
+shipframe install --codex --codex-agents
 ```
 
 If your Homebrew version requires tap trust, run the exact trust command it
@@ -52,7 +55,7 @@ shipframe install --codex
 shipframe install --all
 ```
 
-ShipFrame v0.8.0 adds opt-in Git-backed project memory with an explicit, reviewed
+ShipFrame v0.8.1 adds opt-in native Codex subagent roles for exploration and independent read-only review. ShipFrame v0.8.0 added opt-in Git-backed project memory with an explicit, reviewed
 Draft PR flow; Engram remains optional. It also includes the OpenWork Library-
 compatible physical skill copies introduced in v0.7.4 and exposes installer
 maintenance commands through the same wrapper:
