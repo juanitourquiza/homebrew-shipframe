@@ -1,5 +1,9 @@
 # Homebrew Tap for ShipFrame
 
+<p align="center"><a href="https://shipframe.hackeruna.com/"><img src="https://shipframe.hackeruna.com/brand/shipframe-lockup.svg" alt="ShipFrame — AI coding workflows for teams" width="308"></a></p>
+
+<p align="center"><a href="https://shipframe.hackeruna.com/#install">Install with Homebrew</a> · <a href="https://shipframe.hackeruna.com/#demo">Watch the 30-second demo</a> · <a href="https://github.com/juanitourquiza/shipframe">Visit & star on GitHub</a> · <a href="https://github.com/juanitourquiza/shipframe/blob/main/LICENSE">MIT License</a> · <a href="https://github.com/juanitourquiza/shipframe/security">Security</a> · <a href="https://github.com/juanitourquiza/shipframe/blob/main/CONTRIBUTING.md">Contributing</a></p>
+
 Install ShipFrame on macOS with Homebrew:
 
 ```bash
@@ -20,7 +24,6 @@ brew install shipframe
 ```
 
 Pull requests run the formula style check, strict online audit, release livecheck, source install, and formula smoke test on macOS.
-
 
 ## Optional: Herdr plugin
 
