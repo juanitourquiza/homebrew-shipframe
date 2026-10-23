@@ -1,16 +1,16 @@
 class Shipframe < Formula
   desc "AI coding workflows for teams that plan, prove, and ship"
   homepage "https://shipframe.hackeruna.com/"
-  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v0.8.4.tar.gz"
-  sha256 "099e0bca73da757167063ea38ee1ddd6d430547f456ca563189372907b8260a2"
+  url "https://github.com/juanitourquiza/shipframe/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "5de008ad7bbbe1486351a174c9e3554d65af3137c6fbff85769936e1fe99ba41"
   license "MIT"
 
   depends_on "node"
   depends_on "python@3.14"
 
   resource "readme" do
-    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v0.8.4/README.md"
-    sha256 "b4e63a06e15731aa3afeb3348c1ff096aa1594f6ce9e0a264401f22fd3b0c40d"
+    url "https://raw.githubusercontent.com/juanitourquiza/shipframe/v1.0.0/README.md"
+    sha256 "e33e5aba6c6a68a60de598896985d9dc426bbf71952d732bdad9b1cfedd8e3ac"
   end
 
   def install
@@ -33,6 +33,7 @@ class Shipframe < Formula
         install --codex        Install for Codex CLI (skills + workflow + optional prompt hook).
         install --codex-agents Install optional native Codex explorer/reviewer roles (use with --codex).
         install --all          Install for Claude Code, OpenCode, and Codex.
+        install --pr-review   Install optional AI PR review (requires a target + provider).
         install --doctor       Run diagnostics. Use --repo-only for CI-safe checks.
         install --repair       Repair ShipFrame-owned artifacts. Dry-run unless --yes is passed.
         install --uninstall    Remove ShipFrame-owned artifacts. Dry-run unless --yes is passed.
@@ -52,9 +53,12 @@ class Shipframe < Formula
           shift
           doctor=false
           repo_only=false
+          project_dir_set=false
+          project_dir="$PWD"
           for arg in "$@"; do
             [ "$arg" = "--doctor" ] && doctor=true
             [ "$arg" = "--repo-only" ] && repo_only=true
+            [ "$arg" = "--project-dir" ] && project_dir_set=true
           done
           if [ "$doctor" = true ] && [ "$repo_only" = true ] && [ ! -e "#{libexec}/README.md" ]; then
             source_tmp="$(mktemp -d "${TMPDIR:-/tmp}/shipframe-homebrew-source.XXXXXX")"
@@ -72,7 +76,9 @@ class Shipframe < Formula
             "$source_tmp/install.sh" "$@"
             exit $?
           fi
-          cd "#{libexec}"
+          if [ "$project_dir_set" = false ]; then
+            set -- --project-dir "$project_dir" "$@"
+          fi
           exec "#{libexec}/install.sh" "$@"
           ;;
         -h|--help|help|"")
@@ -91,6 +97,7 @@ class Shipframe < Formula
     assert_match "Usage: shipframe", shell_output("#{bin}/shipframe --help")
     assert_match "--doctor", shell_output("#{bin}/shipframe install --help")
     assert_match "--codex-agents", shell_output("#{bin}/shipframe install --help")
+    assert_match "--pr-review", shell_output("#{bin}/shipframe install --help")
     assert_match "Doctor summary:", shell_output("#{bin}/shipframe install --doctor --repo-only")
 
     home = testpath/"home"
@@ -103,5 +110,8 @@ class Shipframe < Formula
       shell_output("#{bin}/shipframe install --uninstall --openwork --yes")
       refute_path_exists skill
     end
+
+    # The wrapper must keep project artifacts out of Homebrew's read-only libexec.
+    assert_path_exists libexec/"scripts/sf_pr_review.py"
   end
 end
