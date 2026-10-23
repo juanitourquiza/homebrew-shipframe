@@ -53,9 +53,12 @@ class Shipframe < Formula
           shift
           doctor=false
           repo_only=false
+          project_dir_set=false
+          project_dir="$PWD"
           for arg in "$@"; do
             [ "$arg" = "--doctor" ] && doctor=true
             [ "$arg" = "--repo-only" ] && repo_only=true
+            [ "$arg" = "--project-dir" ] && project_dir_set=true
           done
           if [ "$doctor" = true ] && [ "$repo_only" = true ] && [ ! -e "#{libexec}/README.md" ]; then
             source_tmp="$(mktemp -d "${TMPDIR:-/tmp}/shipframe-homebrew-source.XXXXXX")"
@@ -73,7 +76,9 @@ class Shipframe < Formula
             "$source_tmp/install.sh" "$@"
             exit $?
           fi
-          cd "#{libexec}"
+          if [ "$project_dir_set" = false ]; then
+            set -- --project-dir "$project_dir" "$@"
+          fi
           exec "#{libexec}/install.sh" "$@"
           ;;
         -h|--help|help|"")
@@ -105,5 +110,8 @@ class Shipframe < Formula
       shell_output("#{bin}/shipframe install --uninstall --openwork --yes")
       refute_path_exists skill
     end
+
+    # The wrapper must keep project artifacts out of Homebrew's read-only libexec.
+    assert_path_exists libexec/"scripts/sf_pr_review.py"
   end
 end
