@@ -25,6 +25,26 @@ brew install shipframe
 
 Pull requests run the formula style check, strict online audit, release livecheck, source install, and formula smoke test on macOS.
 
+## Optional: AI PR reviewer (v1.0.0)
+
+Install the GitHub Actions reviewer explicitly for a supported provider:
+
+```bash
+shipframe install --codex --pr-review nan-builders
+# or use --claude, --openwork, --opencode, or --all as the target
+```
+
+Choose an install target (`--claude`, `--openwork`, `--opencode`, `--codex`, or
+`--all`) before `--pr-review`. Supported providers are `nan-builders`, `claude`,
+`openai`, and `custom`; use `off` to disable. The installer adds a repository
+workflow and review script; configure the
+`SF_REVIEW_API_KEY` repository secret with your provider key. For `custom`, also
+set `SF_REVIEW_BASE_URL` and `SF_REVIEW_MODEL`. Fork pull requests are skipped;
+the workflow only comments (it cannot push code) and does not print the secret.
+If present, the project profile is applied as additional review guidance. See
+the [core README](https://github.com/juanitourquiza/shipframe#ai-pr-reviewer-opt-in)
+for full provider and security details.
+
 ## Optional: Herdr plugin
 
 Homebrew installs the base ShipFrame toolkit only. Install the Herdr surface separately:
