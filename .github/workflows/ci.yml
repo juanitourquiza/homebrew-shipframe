@@ -19,12 +19,12 @@ jobs:
           mkdir -p "$(dirname "$tap_dir")"
           ln -s "$GITHUB_WORKSPACE" "$tap_dir"
       - name: Check formula style
-        run: brew style --formula juanitourquiza/shipframe/shipframe
+        run: brew style --formula juanitourquiza/homebrew-shipframe/shipframe
       - name: Audit formula metadata and downloads
-        run: brew audit --strict --online juanitourquiza/shipframe/shipframe
+        run: brew audit --strict --online juanitourquiza/homebrew-shipframe/shipframe
       - name: Check release version
-        run: brew livecheck --formula juanitourquiza/shipframe/shipframe
+        run: brew livecheck --formula juanitourquiza/homebrew-shipframe/shipframe
       - name: Install formula from source
-        run: brew install --build-from-source juanitourquiza/shipframe/shipframe
+        run: brew install --build-from-source juanitourquiza/homebrew-shipframe/shipframe
       - name: Run formula smoke test
-        run: brew test juanitourquiza/shipframe/shipframe
+        run: brew test juanitourquiza/homebrew-shipframe/shipframe
