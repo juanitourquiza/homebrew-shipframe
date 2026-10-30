@@ -18,6 +18,11 @@ jobs:
           tap_dir="$(brew --repository)/Library/Taps/juanitourquiza/homebrew-shipframe"
           mkdir -p "$(dirname "$tap_dir")"
           ln -s "$GITHUB_WORKSPACE" "$tap_dir"
+      - name: Trust the local tap (Homebrew 6 Tap Trust)
+        run: |
+          # Homebrew 6 requires explicit trust before loading third-party tap
+          # formulae; older brew has no `brew trust`, so tolerate its absence.
+          brew trust juanitourquiza/shipframe || true
       - name: Check formula style
         run: brew style --formula juanitourquiza/shipframe/shipframe
       - name: Audit formula metadata and downloads
